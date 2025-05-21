@@ -782,3 +782,193 @@ console.log(soma(4, 5, 6, 7, 8)); // Saída: 30
 * Código mais limpo e fácil de manter.
 
 Parâmetros REST são muito úteis para criar funções versáteis que processam listas de dados dinâmicas.
+<hr>
+
+## 📘 Aula 24 - Funções Anônimas em JavaScript #P1
+Funções anônimas são funções **sem nome**, geralmente atribuídas a variáveis ou usadas como argumentos em outras funções. São úteis para criar blocos de código rápidos e temporários.
+
+### Exemplo atribuído a uma variável:
+
+```javascript
+const saudacao = function() {
+  console.log("Olá, mundo!");
+};
+
+saudacao(); // Saída: Olá, mundo!
+```
+
+### Exemplo como argumento (callback):
+
+```javascript
+setTimeout(function() {
+  console.log("Executado após 2 segundos");
+}, 2000);
+```
+
+### Características:
+
+* Não têm nome próprio.
+* Muito usadas em programação funcional e eventos.
+* Permitem criar código mais compacto e flexível.
+
+Funções anônimas são uma parte importante do JavaScript moderno para escrever código dinâmico e eficiente.
+<hr>
+
+## 📘 Aula 25 - Arrow Function em JavaScript
+Arrow Functions são uma forma mais curta e moderna de escrever funções em JavaScript, com sintaxe mais simples e comportamentos específicos no uso do `this`.
+
+### Exemplo básico:
+
+```javascript
+const soma = (a, b) => {
+  return a + b;
+};
+
+console.log(soma(3, 4)); // Saída: 7
+```
+
+### Sintaxe ainda mais enxuta (retorno implícito):
+
+```javascript
+const multiplica = (a, b) => a * b;
+
+console.log(multiplica(5, 6)); // Saída: 30
+```
+
+### Vantagens das Arrow Functions:
+
+* Sintaxe compacta e clara.
+* Não cria seu próprio `this`, herdando o contexto da função onde foi criada.
+* Muito usadas em funções callback e programação funcional.
+
+Arrow Functions facilitam escrever códigos mais limpos e modernos em JavaScript.
+<hr>
+
+## 📘 Aula 26 - Funções dentro de funções em JavaScript (Funções aninhadas)
+Funções aninhadas são funções definidas dentro de outras funções. Elas ajudam a organizar o código e criar escopos locais.
+
+### Exemplo:
+
+```javascript
+function saudacao(nome) {
+  function mensagem() {
+    return "Olá, " + nome + "!";
+  }
+  return mensagem();
+}
+
+console.log(saudacao("Ana")); // Saída: Olá, Ana!
+```
+
+### Como funciona:
+
+* A função interna (`mensagem`) só pode ser acessada dentro da função externa (`saudacao`).
+* Isso ajuda a proteger variáveis e criar lógica modular.
+
+### Vantagens:
+
+* Organização e encapsulamento do código.
+* Evita poluir o escopo global.
+* Facilita a reutilização e manutenção.
+
+Funções aninhadas são poderosas para estruturar seu código de forma clara e segura.
+<hr>
+
+## 📘 Aula 27 - Funções Geradoras em JavaScript
+Funções geradoras são funções especiais que podem pausar sua execução e retomá-la depois, permitindo gerar uma sequência de valores sob demanda.
+
+### Como definir uma função geradora:
+
+```javascript
+function* contador() {
+  let i = 0;
+  while (true) {
+    yield i++;
+  }
+}
+```
+
+### Como usar:
+
+```javascript
+const gen = contador();
+
+console.log(gen.next().value); // Saída: 0
+console.log(gen.next().value); // Saída: 1
+console.log(gen.next().value); // Saída: 2
+```
+
+### Explicação:
+
+* A palavra-chave `function*` define uma função geradora.
+* O comando `yield` pausa a função e retorna um valor.
+* O método `next()` retoma a execução até o próximo `yield`.
+
+### Vantagens:
+
+* Permite controlar a execução e consumo de dados sob demanda.
+* Útil para trabalhar com grandes coleções ou fluxos de dados infinitos.
+
+Funções geradoras são poderosas para criar iteradores personalizados e controlar processos complexos.
+<hr>
+
+## 📘 Aula 28 - Aprendendo sobre o método MAP em JavaScript
+O método **`map()`** é usado para transformar cada elemento de um array, criando um novo array com os resultados da função aplicada.
+
+### Exemplo:
+
+```javascript
+const numeros = [1, 2, 3, 4];
+const dobro = numeros.map(num => num * 2);
+
+console.log(dobro); // Saída: [2, 4, 6, 8]
+```
+
+### Como funciona:
+
+* `map()` recebe uma função callback que é aplicada a cada elemento do array.
+* Retorna um novo array com os valores transformados, sem modificar o original.
+
+### Vantagens:
+
+* Facilita transformar dados em arrays.
+* Código mais claro e funcional.
+
+O método `map()` é essencial para trabalhar com coleções de dados de forma eficiente e elegante.
+<hr>
+
+## 📘 Aula 29 - Usando o operador THIS dentro de funções em JavaScript
+O operador **`this`** referencia o contexto no qual a função está sendo executada. Seu valor varia dependendo de como a função é chamada.
+
+### Exemplos básicos:
+
+```javascript
+const obj = {
+  nome: "Carlos",
+  saudacao: function() {
+    console.log("Olá, " + this.nome);
+  }
+};
+
+obj.saudacao(); // Saída: Olá, Carlos
+```
+
+### Com funções normais fora de objetos:
+
+```javascript
+function teste() {
+  console.log(this);
+}
+
+teste(); // No navegador, retorna o objeto global (window)
+```
+
+### Particularidades:
+
+* Em funções dentro de objetos, `this` aponta para o objeto.
+* Em funções normais, `this` pode apontar para o objeto global (window) ou ser `undefined` no modo estrito.
+* Em **arrow functions**, `this` é herdado do contexto externo.
+
+### Importância:
+
+Entender `this` é fundamental para manipular corretamente objetos, eventos e classes em JavaScript.
