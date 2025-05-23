@@ -972,3 +972,26 @@ teste(); // No navegador, retorna o objeto global (window)
 ### Importância:
 
 Entender `this` é fundamental para manipular corretamente objetos, eventos e classes em JavaScript.
+<hr>
+
+## 📘 Aula 30 - Aprendendo o Método getElementById
+O método `getElementById` no JavaScript serve para acessar um elemento HTML específico que tenha um atributo `id` correspondente. Ele retorna o elemento do DOM que possui aquele `id` ou `null` se não encontrar.
+
+Exemplo:
+
+```html
+<div id="mensagem">Olá!</div>
+<button id="botao">Clique</button>
+```
+
+```javascript
+const mensagem = document.getElementById('mensagem');
+mensagem.textContent = 'Texto alterado!';
+
+const botao = document.getElementById('botao');
+botao.addEventListener('click', () => {
+  alert('Botão clicado!');
+});
+```
+
+É importante lembrar que o `id` deve ser único na página. Com a referência do elemento, você pode alterar o texto, o estilo, os atributos e adicionar eventos.
