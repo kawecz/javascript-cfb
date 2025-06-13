@@ -995,3 +995,111 @@ botao.addEventListener('click', () => {
 ```
 
 É importante lembrar que o `id` deve ser único na página. Com a referência do elemento, você pode alterar o texto, o estilo, os atributos e adicionar eventos.
+<hr>
+
+## 📘Aula 31 - Aprenda o Método getElementsByTagName
+
+### 📘 **Introdução**
+
+O método `getElementsByTagName` é usado para acessar elementos do DOM (Document Object Model) com base no nome da *tag* HTML, como `"div"`, `"p"`, `"li"`, etc. É uma ferramenta essencial quando queremos manipular ou consultar vários elementos de um mesmo tipo em uma página.
+
+---
+
+### 🧱 **Conceitos Fundamentais**
+
+* **DOM (Document Object Model):** Representação em árvore de todos os elementos HTML de uma página.
+* **`getElementsByTagName`:** Retorna uma *HTMLCollection* (uma lista parecida com um array) com todos os elementos que possuem a tag especificada.
+
+```javascript
+const paragrafos = document.getElementsByTagName("p");
+```
+
+Acima, `paragrafos` conterá todos os elementos `<p>` da página.
+
+---
+
+### 🔍 **Funcionamento Detalhado**
+
+* **Sintaxe básica:**
+
+```javascript
+document.getElementsByTagName("tagName");
+```
+
+* **Parâmetro:** `"tagName"` – nome da tag em letras minúsculas (exceto em XML, que é *case-sensitive*).
+* **Retorno:** uma **HTMLCollection**, que é ao vivo (*live*), ou seja, se o DOM mudar, a coleção muda automaticamente.
+
+---
+
+### ⚙️ **Etapas passo a passo**
+
+1. O JavaScript acessa o documento HTML.
+2. O método `getElementsByTagName` procura todos os elementos com a tag indicada.
+3. Ele retorna uma coleção (lista).
+4. Você pode percorrer essa coleção com um `for`, `for...of`, ou converter para `Array`.
+
+```javascript
+const divs = document.getElementsByTagName("div");
+for (let i = 0; i < divs.length; i++) {
+  divs[i].style.backgroundColor = "lightblue";
+}
+```
+
+---
+
+### 🧠 **Dicas importantes**
+
+* O resultado **não é um array real**, mas pode ser convertido:
+
+```javascript
+const divsArray = Array.from(document.getElementsByTagName("div"));
+```
+
+* Você pode usar em qualquer elemento, não apenas em `document`:
+
+```javascript
+const nav = document.querySelector("nav");
+const links = nav.getElementsByTagName("a");
+```
+
+---
+
+### ⚠️ **Erros Comuns**
+
+* Achar que retorna um único elemento (usa-se `getElementById` para isso).
+* Esquecer que é uma coleção ao vivo (isso pode causar comportamentos inesperados).
+* Tentar usar métodos de array diretamente (como `.forEach()`), sem converter.
+
+---
+
+### 🧪 **Exemplo Prático**
+
+```html
+<ul>
+  <li>Maçã</li>
+  <li>Banana</li>
+  <li>Laranja</li>
+</ul>
+
+<script>
+  const itens = document.getElementsByTagName("li");
+  for (let item of itens) {
+    item.style.color = "green";
+  }
+</script>
+```
+
+---
+
+### 📚 **O Que Aprender Depois**
+
+* `getElementById`
+* `getElementsByClassName`
+* `querySelector` e `querySelectorAll` (mais modernos e flexíveis)
+* Manipulação de classes (`classList`)
+* Eventos (`addEventListener`)
+
+---
+<hr>
+
+
