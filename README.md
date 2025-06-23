@@ -1221,5 +1221,138 @@ function destacar() {
 ```
 <hr>
 
+## 📘Aula 33 - QuerySelector e QuerySelectorAll 
+
+## ✅ **Introdução**
+
+Os métodos **`querySelector`** e **`querySelectorAll`** são formas modernas e extremamente versáteis de selecionar elementos HTML utilizando **seletores CSS**. Eles são mais poderosos e flexíveis do que métodos mais antigos como `getElementById`, `getElementsByClassName` ou `getElementsByTagName`.
+
+---
+
+## 🔑 **Fundamentos dos Métodos**
+
+| Método               | Descrição                                                       |
+| -------------------- | --------------------------------------------------------------- |
+| `querySelector()`    | Retorna **o primeiro elemento** que corresponde ao seletor CSS. |
+| `querySelectorAll()` | Retorna **todos os elementos** que correspondem ao seletor CSS. |
+
+---
+
+## ⚙️ **Sintaxe**
+
+```javascript
+document.querySelector('seletorCSS');
+document.querySelectorAll('seletorCSS');
+```
+
+✅ **O seletorCSS** funciona da mesma forma que no CSS:
+
+* `#id` → seleciona por ID
+* `.classe` → seleciona por classe
+* `tag` → seleciona por nome da tag (`div`, `p`, `h1`, etc.)
+* Combinadores → `div p`, `header .menu`, etc.
+
+---
+
+## 🚀 **Exemplos na Prática**
+
+### 🔸 **`querySelector()` – Retorna o primeiro elemento**
+
+HTML:
+
+```html
+<p class="text">Primeiro parágrafo</p>
+<p class="text">Segundo parágrafo</p>
+```
+
+JavaScript:
+
+```javascript
+const p = document.querySelector('.text');
+console.log(p.textContent); // Resultado: "Primeiro parágrafo"
+```
+
+---
+
+### 🔸 **`querySelectorAll()` – Retorna todos os elementos**
+
+```javascript
+const textos = document.querySelectorAll('.text');
+
+textos.forEach(elemento => {
+  console.log(elemento.textContent);
+});
+```
+
+🟰 Resultado:
+
+```
+Primeiro parágrafo
+Segundo parágrafo
+```
+
+---
+
+## 🔥 **Exemplos de Seletores CSS no JavaScript**
+
+| Seletor                  | Significado                                     |
+| ------------------------ | ----------------------------------------------- |
+| `'#menu'`                | ID menu                                         |
+| `'.btn'`                 | Classe btn                                      |
+| `'header nav ul li'`     | Todos os `<li>` dentro de `<nav>` no `<header>` |
+| `'input[type="text"]'`   | Input do tipo texto                             |
+| `'div > p'`              | `<p>` filho direto de `<div>`                   |
+| `'section:nth-child(2)'` | Segundo filho da section                        |
+
+---
+
+## 📦 **Diferenças Importantes**
+
+| Característica          | `querySelector`                | `querySelectorAll`            |
+| ----------------------- | ------------------------------ | ----------------------------- |
+| Retorno                 | Primeiro elemento              | Lista de elementos (NodeList) |
+| Tipo de coleção         | Element (ou null se não achar) | NodeList (semelhante a array) |
+| Suporte a `forEach()`   | ❌ (no elemento único)          | ✅                             |
+| Atualiza dinamicamente? | ❌ (NodeList estático)          | ❌ (NodeList é estático)       |
+
+---
+
+## ❗ Atenção
+
+* **`querySelectorAll()`** retorna uma **NodeList**, que é parecida com array, mas não tem todos os métodos de array antigo. No entanto, já suporta **`forEach()`** nos navegadores modernos.
+* Diferente de `getElementsByClassName`, que atualiza automaticamente quando o DOM muda, **NodeList não se atualiza dinamicamente**.
+
+---
+
+## 🏗️ **Exemplo Completo**
+
+HTML:
+
+```html
+<button class="btn">Button 1</button>
+<button class="btn">Button 2</button>
+<button class="btn">Button 3</button>
+```
+
+JavaScript:
+
+```javascript
+const firstButton = document.querySelector('.btn');
+firstButton.style.backgroundColor = 'red';
+
+const allButtons = document.querySelectorAll('.btn');
+allButtons.forEach(button => {
+    button.style.color = 'white';
+});
+```
+
+---
+
+## 💡 **Conclusão**
+
+Os métodos **`querySelector`** e **`querySelectorAll`** são extremamente poderosos, oferecendo flexibilidade para selecionar elementos de qualquer complexidade usando seletores CSS. Eles são a escolha recomendada para a maioria dos casos em projetos modernos de JavaScript.
+
+<hr>
+
 
 
