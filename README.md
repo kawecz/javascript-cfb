@@ -1102,4 +1102,124 @@ const links = nav.getElementsByTagName("a");
 ---
 <hr>
 
+## 📘Aula 32 - Aprenda o Método getElementsByClassName
+
+## ✅ **Introdução**
+
+O método **`getElementsByClassName`** é uma função do JavaScript utilizada para selecionar elementos HTML que possuem uma ou mais classes específicas. Faz parte das técnicas de **manipulação do DOM (Document Object Model)**, permitindo interagir, alterar ou acessar elementos da página de forma dinâmica.
+
+---
+
+## 🔑 **Fundamentos do Método**
+
+* ✅ **Sintaxe:**
+
+```javascript
+document.getElementsByClassName('nomeDaClasse');
+```
+
+* ✅ **O que retorna?**
+  Uma **HTMLCollection**, que é uma coleção de elementos (tipo uma lista), parecida com um array, mas **não é exatamente um array** (não possui todos os métodos como `map` ou `forEach` diretamente).
+
+* ✅ **Características:**
+
+* Busca **todos os elementos** que possuem a classe informada.
+
+* O resultado é **dinâmico**, ou seja, se o DOM mudar, a coleção também muda.
+
+* É **case-sensitive**, ou seja, diferencia maiúsculas e minúsculas.
+
+---
+
+## 🚀 **Exemplos na Prática**
+
+### 🔸 Exemplo básico:
+
+HTML:
+
+```html
+<div class="card">Card 1</div>
+<div class="card">Card 2</div>
+<div class="card">Card 3</div>
+```
+
+JavaScript:
+
+```javascript
+const cards = document.getElementsByClassName('card');
+
+console.log(cards);  // Mostra a coleção de elementos com a classe "card"
+console.log(cards[0]);  // Acessa o primeiro card
+```
+
+### 🔸 Alterando estilos:
+
+```javascript
+for (let i = 0; i < cards.length; i++) {
+  cards[i].style.backgroundColor = 'lightblue';
+}
+```
+
+---
+
+## 💡 **Diferença para Outras Seleções**
+
+| Método                     | Descrição                                       |
+| -------------------------- | ----------------------------------------------- |
+| `getElementById()`         | Retorna **um único** elemento por ID            |
+| `getElementsByClassName()` | Retorna **vários** elementos por classe         |
+| `getElementsByTagName()`   | Retorna elementos por tag (`div`, `p`, etc)     |
+| `querySelector()`          | Retorna o **primeiro** elemento por seletor CSS |
+| `querySelectorAll()`       | Retorna **todos** os elementos por seletor CSS  |
+
+---
+
+## ⚙️ **Trabalhando com HTMLCollection**
+
+* Não possui métodos de array como `map`, `forEach` (em navegadores antigos), mas pode ser convertido em array:
+
+### 🔸 Convertendo para array:
+
+```javascript
+const cardsArray = Array.from(cards);
+cardsArray.forEach(card => {
+  card.style.border = '2px solid red';
+});
+```
+
+---
+
+## ❌ **Erros comuns**
+
+* Tentar usar métodos de array diretamente na HTMLCollection.
+* Escrever o nome da classe errado (diferencia maiúsculas e minúsculas).
+* Esquecer que é uma coleção e tentar manipular diretamente como um único elemento.
+
+---
+
+## 🏗️ **Exemplo Completo**
+
+HTML:
+
+```html
+<button onclick="destacar()">Destacar Cards</button>
+<div class="card">Card 1</div>
+<div class="card">Card 2</div>
+<div class="card">Card 3</div>
+```
+
+JavaScript:
+
+```javascript
+function destacar() {
+  const cards = document.getElementsByClassName('card');
+  for (let i = 0; i < cards.length; i++) {
+    cards[i].style.backgroundColor = 'yellow';
+    cards[i].style.fontWeight = 'bold';
+  }
+}
+```
+<hr>
+
+
 
