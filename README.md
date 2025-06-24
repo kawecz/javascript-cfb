@@ -1354,5 +1354,165 @@ Os métodos **`querySelector`** e **`querySelectorAll`** são extremamente poder
 
 <hr>
 
+## 📘Aula 34 - Adicionando eventos com addEventListener
+
+## ✅ **Introdução**
+
+O método **`addEventListener()`** permite adicionar ouvintes de eventos a elementos HTML. Isso significa que você pode executar uma função automaticamente quando um evento específico ocorre, como cliques, movimentos do mouse, teclas pressionadas, envio de formulários, entre outros.
+
+---
+
+## 🔑 **Fundamentos do `addEventListener()`**
+
+### ✅ **Sintaxe:**
+
+```javascript
+element.addEventListener('tipoDoEvento', função);
+```
+
+### ✅ **Parâmetros:**
+
+* `'tipoDoEvento'`: uma string que define o tipo de evento (ex.: `'click'`, `'mouseover'`, `'keydown'`, `'submit'`).
+* `função`: uma função que será executada quando o evento ocorrer. Pode ser uma função nomeada, anônima ou arrow function.
+
+---
+
+## 🚀 **Exemplos na Prática**
+
+### 🔸 **Exemplo 1: Clique em botão**
+
+HTML:
+
+```html
+<button id="btn">Clique Aqui</button>
+```
+
+JavaScript:
+
+```javascript
+const button = document.getElementById('btn');
+
+button.addEventListener('click', () => {
+    alert('Você clicou no botão!');
+});
+```
+
+---
+
+### 🔸 **Exemplo 2: Mouse passando sobre um elemento**
+
+HTML:
+
+```html
+<div class="caixa">Passe o mouse aqui</div>
+```
+
+CSS:
+
+```css
+.caixa {
+    width: 200px;
+    height: 100px;
+    background-color: lightblue;
+}
+```
+
+JavaScript:
+
+```javascript
+const box = document.querySelector('.caixa');
+
+box.addEventListener('mouseover', () => {
+    box.style.backgroundColor = 'lightgreen';
+});
+
+box.addEventListener('mouseout', () => {
+    box.style.backgroundColor = 'lightblue';
+});
+```
+
+---
+
+### 🔸 **Exemplo 3: Capturar envio de formulário**
+
+HTML:
+
+```html
+<form id="form">
+    <input type="text" id="name" placeholder="Name">
+    <input type="submit" value="Send">
+</form>
+```
+
+JavaScript:
+
+```javascript
+const form = document.getElementById('form');
+
+form.addEventListener('submit', (event) => {
+    event.preventDefault(); // Evita recarregar a página
+    const name = document.getElementById('name').value;
+    alert(`Olá, ${name}`);
+});
+```
+
+---
+
+## ⚙️ **Eventos Comuns**
+
+| Evento        | Descrição                    |
+| ------------- | ---------------------------- |
+| `'click'`     | Clique                       |
+| `'mouseover'` | Mouse sobre o elemento       |
+| `'mouseout'`  | Mouse sai do elemento        |
+| `'keydown'`   | Pressionar tecla             |
+| `'submit'`    | Envio de formulário          |
+| `'dblclick'`  | Clique duplo                 |
+| `'change'`    | Mudança em inputs ou selects |
+| `'input'`     | Sempre que algo é digitado   |
+
+---
+
+## ✅ **Vantagens do `addEventListener()`**
+
+* Pode adicionar **vários ouvintes** para o mesmo evento no mesmo elemento.
+* Mantém o código **separado do HTML**, mais organizado e limpo.
+* Permite remover eventos, se necessário, usando `removeEventListener()`.
+
+---
+
+## ❌ **Erros comuns**
+
+* Esquecer de selecionar corretamente o elemento (`null` error).
+* Não usar `preventDefault()` em eventos como `submit` se quiser evitar recarregar a página.
+* Escrever errado o nome do evento (`'Click'` errado → deveria ser `'click'` → é case sensitive).
+
+---
+
+## 🏗️ **Exemplo Completo**
+
+```html
+<button id="btn">Clique</button>
+<div id="box">Caixa</div>
+```
+
+```javascript
+const btn = document.getElementById('btn');
+const box = document.getElementById('box');
+
+btn.addEventListener('click', () => {
+    box.innerText = 'O botão foi clicado!';
+    box.style.backgroundColor = 'yellow';
+});
+```
+
+---
+
+## 🔥 **Conclusão**
+
+O método **`addEventListener()`** é essencial no JavaScript moderno para criar páginas web interativas. Ele permite responder a ações do usuário de forma elegante, organizada e eficiente.
+
+---
+<hr>
 
 
