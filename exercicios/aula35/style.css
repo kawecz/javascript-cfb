@@ -1,0 +1,63 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    transition: all 1s ;
+    list-style-type: none;
+}
+
+body {
+    background: rgb(12, 12, 12);
+}
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10%;
+}
+
+.container {
+    border: 1px solid black;
+    width: 250px;
+    height: 250px;
+    text-align: center;
+    padding: 1em;
+    margin: 2em ;
+    background: white;
+    border-radius: 0.5em;
+    font-weight: 600;
+    box-shadow: 10px 10px 20px black;
+}
+
+.c1 {
+    cursor: pointer;
+    padding: 0.3em;
+}
+.c1:hover {
+    transform: scale(1.1);
+    transform: translateX(2px);
+    color: rgb(138, 138, 64);
+}
+
+
+button {
+    padding: 1em;
+    border: none;
+    background: green;
+    color: white;
+    border-radius: 1em;
+    cursor: pointer;
+    font-weight: 600;
+    margin-right: 0.5em;
+}
+button:hover {
+    background: rgb(160, 255, 160); 
+    color: black;  
+}
+
+
+.selecionado {
+    color: red;
+}
