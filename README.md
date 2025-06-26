@@ -1515,4 +1515,59 @@ O método **`addEventListener()`** é essencial no JavaScript moderno para criar
 ---
 <hr>
 
+## 📘Aula 37 - Parando a propagação do evento com o método stopPropagation
 
+## O que é propagação de eventos?
+
+Em JavaScript, quando um evento ocorre em um elemento, ele não apenas é disparado nesse elemento, mas também em todos os seus ancestrais na árvore do DOM. Esse processo é chamado de **propagação de eventos** ou **bubbling**.
+
+## Como `stopPropagation()` funciona
+
+O método `stopPropagation()` é usado para interromper essa propagação, evitando que o evento suba na hierarquia do DOM.
+
+```javascript
+elemento.addEventListener('click', function(event) {
+  event.stopPropagation();
+  // O evento não será propagado para os elementos pais
+});
+```
+
+## Exemplo prático
+
+```html
+<div id="pai" style="padding: 20px; background: lightblue;">
+  <div id="filho" style="padding: 20px; background: lightcoral;">
+    Clique-me
+  </div>
+</div>
+
+<script>
+  document.getElementById('pai').addEventListener('click', function() {
+    alert('Elemento pai clicado!');
+  });
+
+  document.getElementById('filho').addEventListener('click', function(event) {
+    alert('Elemento filho clicado!');
+    event.stopPropagation(); // Impede que o evento chegue ao pai
+  });
+</script>
+```
+
+## Quando usar `stopPropagation()`
+
+- Quando você tem elementos aninhados com handlers de eventos e quer que apenas o elemento mais interno responda
+- Para evitar que eventos padrão do navegador sejam acionados
+- Em menus dropdown ou outros componentes interativos onde cliques internos não devem afetar o container principal
+
+## Diferença entre `stopPropagation()` e `stopImmediatePropagation()`
+
+- `stopPropagation()`: impede que o evento se propague para elementos pais
+- `stopImmediatePropagation()`: além de parar a propagação, também impede que outros listeners do mesmo evento no mesmo elemento sejam executados
+
+## Cuidados ao usar
+
+- Use com moderação, pois pode interferir com outros scripts que esperam que a propagação ocorra
+- Pode tornar a depuração mais difícil se usado excessivamente
+- Nem sempre é a melhor solução - às vezes é melhor verificar `event.target` no handler
+
+<hr>
