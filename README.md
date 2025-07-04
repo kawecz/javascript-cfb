@@ -1904,3 +1904,97 @@ Você pode usar isso para:
 A criação dinâmica de elementos com `createElement()` e sua inserção no DOM é **essencial para construir interfaces interativas**, como menus, cards, notificações e componentes personalizados com JavaScript puro, sem frameworks.
 
 <hr>
+
+## 📘 Aula 41 - Removendo elementos do DOM 
+
+### 📌 **O que é?**
+
+`removeChild` é um método usado para remover um **nó filho** (elemento HTML) de um **nó pai** no DOM (Document Object Model).
+
+> ⚠️ Para usar `removeChild`, você **precisa acessar o pai** do elemento que deseja remover.
+
+---
+
+### ✅ **Sintaxe**
+
+```javascript
+parentElement.removeChild(childElement)
+```
+
+* `parentElement`: o elemento que **contém** o que será removido.
+* `childElement`: o **elemento que será removido** do DOM.
+
+---
+
+### 🔧 **Exemplo Prático**
+
+```html
+<ul id="lista">
+  <li>Item 1</li>
+  <li id="item-remover">Item 2</li>
+  <li>Item 3</li>
+</ul>
+```
+
+```javascript
+const lista = document.querySelector("#lista")
+const itemRemover = document.querySelector("#item-remover")
+
+lista.removeChild(itemRemover)
+```
+
+🧹 Resultado: o `<li id="item-remover">Item 2</li>` é removido da `<ul>`.
+
+---
+
+### 🧩 **Exemplo com Botão de Remoção Dinâmica**
+
+```html
+<ul id="cursos">
+  <li>HTML</li>
+  <li id="curso-js">JavaScript</li>
+  <li>CSS</li>
+</ul>
+
+<button id="remover">Remover JavaScript</button>
+```
+
+```javascript
+const btn = document.querySelector("#remover")
+const ul = document.querySelector("#cursos")
+const liJS = document.querySelector("#curso-js")
+
+btn.addEventListener("click", () => {
+  ul.removeChild(liJS)
+})
+```
+
+---
+
+### 🚫 **Erros comuns**
+
+* Tentar remover um nó que **não está dentro** do pai.
+* Usar `removeChild` direto no elemento que se quer remover (ele só funciona a partir do **pai**).
+* O `childElement` precisa **estar realmente no DOM**.
+
+---
+
+### 🆚 Alternativa moderna: `element.remove()`
+
+Se você **não quiser acessar o pai**, pode usar o método mais moderno `element.remove()`:
+
+```javascript
+const item = document.querySelector("#item-remover")
+item.remove()
+```
+
+> Funciona diretamente no próprio elemento, **sem precisar do pai**.
+
+---
+
+### ✅ Conclusão
+
+* `removeChild` é útil quando você precisa remover um elemento **sabendo seu pai**.
+* `element.remove()` é mais simples e moderno.
+* Ambas são importantes para manipular elementos de forma dinâmica no DOM.
+<hr>
