@@ -1998,3 +1998,127 @@ item.remove()
 * `element.remove()` é mais simples e moderno.
 * Ambas são importantes para manipular elementos de forma dinâmica no DOM.
 <hr>
+
+## 📘 Aula 42 - Entendendo o método filter() 
+
+### **1. Definição & Finalidade**
+
+* O método `filter()` é usado para **filtrar elementos de um array**, retornando um **novo array** com **apenas os elementos que satisfazem uma condição** (função de teste).
+* Ele **não altera o array original**.
+
+> 🧠 *"Filtrar" significa selecionar apenas os elementos que "passam" por uma verificação lógica.*
+
+---
+
+### **2. Estrutura / Sintaxe**
+
+```javascript
+array.filter(callback(element, index, array), thisArg)
+```
+
+**Parâmetros:**
+
+* `callback` – função de teste aplicada a cada item.
+
+  * `element` – o valor atual do array.
+  * `index` (opcional) – o índice do elemento atual.
+  * `array` (opcional) – o array original.
+* `thisArg` (opcional) – valor que será usado como `this` dentro do callback.
+
+**Retorno:**
+
+* Um novo array com os elementos **onde o callback retornou `true`**.
+
+---
+
+### **3. Exemplo Básico**
+
+```javascript
+const numeros = [1, 2, 3, 4, 5, 6];
+
+const pares = numeros.filter(function(num) {
+  return num % 2 === 0;
+});
+
+console.log(pares); // [2, 4, 6]
+```
+
+---
+
+### **4. Exemplo com Arrow Function**
+
+```javascript
+const idades = [12, 19, 22, 15, 30];
+
+const maioresDeIdade = idades.filter(idade => idade >= 18);
+
+console.log(maioresDeIdade); // [19, 22, 30]
+```
+
+---
+
+### **5. Como Funciona Internamente**
+
+* Percorre **cada elemento** do array.
+* Aplica a função de teste.
+* Se retornar `true`, **inclui o elemento no novo array**.
+* Se retornar `false`, **ignora** o elemento.
+
+---
+
+### **6. Exemplo com Objetos**
+
+```javascript
+const usuarios = [
+  { nome: "Ana", ativo: true },
+  { nome: "Bruno", ativo: false },
+  { nome: "Carlos", ativo: true }
+];
+
+const usuariosAtivos = usuarios.filter(user => user.ativo);
+
+console.log(usuariosAtivos);
+// [{ nome: "Ana", ativo: true }, { nome: "Carlos", ativo: true }]
+```
+
+---
+
+### **7. Diferença entre `filter()` e `map()`**
+
+| Método     | Objetivo              | Retorna o quê?               |
+| ---------- | --------------------- | ---------------------------- |
+| `filter()` | Selecionar elementos  | Um novo array **filtrado**   |
+| `map()`    | Transformar elementos | Um novo array **modificado** |
+
+---
+
+### **8. Casos de Uso Comuns**
+
+* Filtrar usuários ativos.
+* Filtrar produtos acima de um certo preço.
+* Filtrar elementos que contêm uma palavra.
+* Limpar listas com valores nulos ou `undefined`.
+
+---
+
+### **9. Dicas e Boas Práticas**
+
+* **Sempre retorne um booleano (`true` ou `false`)** no callback.
+* Ideal usar com **arrow functions** para código mais limpo.
+* Combine com `map()` ou `reduce()` para lógica mais poderosa.
+
+---
+
+### **10. Exercício Rápido**
+
+Filtre os nomes maiores que 4 letras:
+
+```javascript
+const nomes = ["Ana", "Bruno", "Caio", "Lu", "Fernando"];
+
+const resultado = nomes.filter(nome => nome.length > 4);
+
+console.log(resultado); // ["Bruno", "Fernando"]
+```
+
+<hr>
