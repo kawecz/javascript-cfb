@@ -2122,3 +2122,97 @@ console.log(resultado); // ["Bruno", "Fernando"]
 ```
 
 <hr>
+
+## 📘 Aula 44 - Removendo elementos do DOM | Remove()
+### 📌 **1. O que é a função `remove()`?**
+
+* O método `.remove()` é uma função nativa de JavaScript usada para **remover um elemento diretamente do DOM** (Document Object Model).
+* Ele **não precisa acessar o elemento pai**, diferente de métodos antigos como `parentNode.removeChild()`.
+
+---
+
+### 📘 **2. Sintaxe**
+
+```js
+element.remove()
+```
+
+* **element**: é uma referência ao elemento HTML que será removido da página.
+
+---
+
+### 🧪 **3. Exemplo Básico**
+
+```html
+<p id="mensagem">Olá, eu serei removido!</p>
+<button onclick="remover()">Remover parágrafo</button>
+
+<script>
+  function remover() {
+    const elemento = document.getElementById("mensagem");
+    elemento.remove(); // remove o <p> do DOM
+  }
+</script>
+```
+
+---
+
+### 🔁 **4. Exemplo com vários elementos**
+
+```html
+<ul id="lista">
+  <li>Item 1 <button onclick="remover(this)">X</button></li>
+  <li>Item 2 <button onclick="remover(this)">X</button></li>
+</ul>
+
+<script>
+  function remover(botao) {
+    botao.parentElement.remove(); // remove o <li> pai do botão
+  }
+</script>
+```
+
+---
+
+### 🆚 **5. Comparação com métodos antigos**
+
+Antes do `remove()`:
+
+```js
+element.parentNode.removeChild(element);
+```
+
+Com `remove()`:
+
+```js
+element.remove();
+```
+
+* Mais **limpo**, moderno e fácil de ler.
+
+---
+
+### ⚠️ **6. Compatibilidade**
+
+* Suportado na maioria dos navegadores modernos (Chrome, Firefox, Edge, Safari).
+* **Internet Explorer não suporta `remove()`**, então evite usá-lo se precisar de suporte total ao IE.
+
+---
+
+### ✅ **7. Dica Extra**
+
+Você pode verificar se o método existe antes de usar (para segurança em navegadores antigos):
+
+```js
+if (element.remove) {
+  element.remove();
+}
+```
+
+---
+
+### 🎯 **Conclusão**
+
+A função `.remove()` é uma forma moderna, prática e direta de **remover elementos HTML da página** usando JavaScript. Ideal para aplicações dinâmicas como SPAs, interações de usuário e atualização de conteúdo em tempo real.
+
+<hr>
