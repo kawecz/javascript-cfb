@@ -2216,3 +2216,95 @@ if (element.remove) {
 A função `.remove()` é uma forma moderna, prática e direta de **remover elementos HTML da página** usando JavaScript. Ideal para aplicações dinâmicas como SPAs, interações de usuário e atualização de conteúdo em tempo real.
 
 <hr>
+
+## 📘 Aula 45 - Criando elementos #P2 antes e depois de outros elementos
+
+---
+
+## 📌 **1. Métodos para inserir elementos no DOM**
+
+Existem várias formas de inserir novos elementos HTML no DOM. Aqui vamos focar nos métodos:
+
+### ✅ `insertBefore()`
+
+* **Insere um novo elemento antes de outro existente dentro do mesmo pai.**
+
+```js
+parentNode.insertBefore(newElement, referenceElement);
+```
+
+* `parentNode`: o elemento pai onde ambos estão.
+* `newElement`: o novo elemento que você quer inserir.
+* `referenceElement`: o elemento existente **antes** do qual o novo será inserido.
+
+### ✅ `after()` e `before()` (mais modernos)
+
+* Inserem o elemento **depois** ou **antes** de outro, diretamente.
+
+```js
+element.before(newElement); // insere antes
+element.after(newElement);  // insere depois
+```
+
+> ⚠️ Esses métodos funcionam apenas em navegadores modernos (ES6+).
+
+---
+
+## 🧪 **2. Exemplos na prática**
+
+### 🧱 Usando `insertBefore()`
+
+```js
+const parent = document.querySelector("#container");
+const newElement = document.createElement("p");
+newElement.textContent = "Elemento antes";
+
+const reference = document.querySelector("#alvo");
+
+parent.insertBefore(newElement, reference);
+```
+
+👉 Isso insere o novo `<p>` antes do elemento com ID `alvo`.
+
+---
+
+### ✨ Usando `before()` e `after()`
+
+```js
+const alvo = document.querySelector("#alvo");
+
+const antes = document.createElement("p");
+antes.textContent = "Antes do alvo";
+alvo.before(antes);
+
+const depois = document.createElement("p");
+depois.textContent = "Depois do alvo";
+alvo.after(depois);
+```
+
+👉 Isso insere um parágrafo **antes e depois** do `#alvo`.
+
+---
+
+## 📌 **3. Diferença entre os métodos**
+
+| Método                 | Mais Verboso? | Compatibilidade    | Requer Pai? |
+| ---------------------- | ------------- | ------------------ | ----------- |
+| `insertBefore()`       | Sim           | Alta (mais antigo) | Sim         |
+| `before()` / `after()` | Não           | Moderna (ES6+)     | Não         |
+
+---
+
+## 🛑 **Erros comuns**
+
+* ❌ Tentar usar `insertBefore()` sem o elemento pai.
+* ❌ Achar que `before()`/`after()` funcionam em navegadores antigos sem transpiler.
+* ❌ Inserir elementos já existentes (eles mudam de lugar em vez de duplicar).
+
+---
+
+## ✅ **Dica**
+
+Se estiver criando vários elementos dinamicamente, **crie-os primeiro**, depois use `appendChild`, `before`, ou `after` na ordem desejada.
+
+---
