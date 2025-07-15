@@ -2308,3 +2308,122 @@ alvo.after(depois);
 Se estiver criando vários elementos dinamicamente, **crie-os primeiro**, depois use `appendChild`, `before`, ou `after` na ordem desejada.
 
 ---
+## 📘 Aula 46 - Método Toggle para gerenciar Classes CSS 
+
+### 📌 **1. O Que é `classList.toggle()`?**
+
+O método `toggle()`:
+
+* **Adiciona** uma classe CSS se ela **não estiver presente**
+* **Remove** a classe CSS se ela **já estiver presente**
+
+#### ✅ Sintaxe:
+
+```javascript
+element.classList.toggle("nome-da-classe")
+```
+
+---
+
+### 🧠 **2. Como Funciona na Prática?**
+
+#### Exemplo básico:
+
+```html
+<button id="meuBotao">Clique aqui</button>
+```
+
+```css
+.destaque {
+  background-color: yellow;
+}
+```
+
+```javascript
+const botao = document.getElementById("meuBotao")
+
+botao.addEventListener("click", () => {
+  botao.classList.toggle("destaque")
+})
+```
+
+📌 Quando o botão for clicado:
+
+* Se **não tiver** a classe `"destaque"`, ela será **adicionada**
+* Se **já tiver**, ela será **removida**
+
+---
+
+### ⚙️ **3. Versão com Segundo Parâmetro (boolean opcional)**
+
+Você pode usar um segundo argumento (`true` ou `false`) para **forçar o comportamento**:
+
+```javascript
+element.classList.toggle("classe", true)  // força adicionar
+element.classList.toggle("classe", false) // força remover
+```
+
+---
+
+### 💡 **4. Casos de Uso Comuns**
+
+* Mostrar/ocultar menus, modais, pop-ups
+* Alternar temas (ex: dark/light mode)
+* Responder a eventos (ex: clique, mouseover)
+* Animações e efeitos CSS condicionais
+
+---
+
+### 🚫 **5. Erros Comuns**
+
+* Usar `toggle` em elementos inexistentes (`null`)
+* Esquecer de definir a classe no CSS
+* Esperar que `toggle()` funcione com múltiplas classes ao mesmo tempo (não funciona assim)
+
+---
+
+### ✅ **6. Dica Extra: Como Verificar Se Classe Está Presente**
+
+Você pode verificar manualmente antes de usar `toggle()`:
+
+```javascript
+if (element.classList.contains("ativa")) {
+  element.classList.remove("ativa")
+} else {
+  element.classList.add("ativa")
+}
+```
+
+👉 Isso é exatamente o que `toggle()` faz de forma simplificada!
+
+---
+
+### 🧪 **7. Prática Recomendada**
+
+Crie um botão e altere o estilo com `toggle()`:
+
+```html
+<button id="tema">Alternar Tema</button>
+
+<script>
+  const btn = document.getElementById("tema")
+  document.body.classList.add("light")
+
+  btn.addEventListener("click", () => {
+    document.body.classList.toggle("dark")
+  })
+</script>
+```
+
+---
+
+### 📚 **Resumo Rápido**
+
+| Método                         | O que faz                              |
+| ------------------------------ | -------------------------------------- |
+| `classList.toggle("x")`        | Adiciona se não tiver, remove se tiver |
+| `classList.toggle("x", true)`  | Garante que a classe será adicionada   |
+| `classList.toggle("x", false)` | Garante que a classe será removida     |
+
+---
+
