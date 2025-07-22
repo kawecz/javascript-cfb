@@ -2427,3 +2427,123 @@ Crie um botão e altere o estilo com `toggle()`:
 
 ---
 
+## 📘aula 47 - Método FIND para encontrar elementos em Arrays
+
+### 🧠 **1. O que é o método `find()`?**
+
+O método `find()` é usado em arrays para **retornar o primeiro elemento que satisfaz uma condição lógica**. Ele percorre o array **uma vez** e para assim que encontra o item desejado.
+
+> **Definição curta**: Retorna **o primeiro elemento** que passa no teste da função fornecida.
+
+---
+
+### 🔍 **2. Sintaxe**
+
+```javascript
+array.find(callback(element, index, array), thisArg)
+```
+
+#### **Parâmetros:**
+
+* `callback`: Função que testa cada elemento.
+
+  * `element`: item atual do array.
+  * `index` *(opcional)*: índice do item atual.
+  * `array` *(opcional)*: o array original.
+* `thisArg` *(opcional)*: valor a ser usado como `this` na função callback.
+
+---
+
+### 🧪 **3. Exemplo simples**
+
+```javascript
+const numeros = [10, 25, 30, 40, 50];
+
+const resultado = numeros.find((num) => num > 30);
+
+console.log(resultado); // 40
+```
+
+🗣️ **Explicação:** O `find()` procurou o primeiro número maior que 30 e retornou **40**.
+
+---
+
+### 🧑‍💻 **4. Exemplo com objetos**
+
+```javascript
+const usuarios = [
+  { id: 1, nome: "Ana" },
+  { id: 2, nome: "Carlos" },
+  { id: 3, nome: "Maria" }
+];
+
+const user = usuarios.find((u) => u.nome === "Maria");
+
+console.log(user); // { id: 3, nome: "Maria" }
+```
+
+---
+
+### 🚫 **5. Se não encontrar nada?**
+
+```javascript
+const nomes = ["Lucas", "Pedro", "Julia"];
+
+const resultado = nomes.find((nome) => nome === "Carlos");
+
+console.log(resultado); // undefined
+```
+
+---
+
+### ⚠️ **6. Diferença entre `find()` e `filter()`**
+
+| Método     | Retorno                                    | Quando usar?                          |
+| ---------- | ------------------------------------------ | ------------------------------------- |
+| `find()`   | **1 único elemento** ou `undefined`        | Quando quiser **apenas um resultado** |
+| `filter()` | **Array com todos os que passam no teste** | Quando quiser **vários resultados**   |
+
+---
+
+### ✅ **7. Casos de uso comuns**
+
+* Buscar um item com ID específico em uma lista.
+* Encontrar o primeiro número que passa de certo limite.
+* Localizar o primeiro erro ou condição em uma sequência.
+
+---
+
+### 🧱 **8. Boas práticas**
+
+* Use `find()` quando **esperar apenas um resultado**.
+* Se precisar de **múltiplos**, use `filter()`.
+* Combine com funções **arrow functions** para maior clareza.
+
+---
+
+### 📚 **9. Exercício de prática**
+
+```javascript
+const produtos = [
+  { id: 101, nome: "Notebook", preco: 2500 },
+  { id: 102, nome: "Tablet", preco: 1200 },
+  { id: 103, nome: "Smartphone", preco: 1800 }
+];
+
+// Encontre o produto com o nome "Tablet"
+const produtoTablet = produtos.find(p => p.nome === "Tablet");
+
+console.log(produtoTablet);
+```
+
+---
+
+### 📘 **Resumo final**
+
+* `find()` retorna o **primeiro elemento** que passa no teste.
+* Se não encontrar, retorna `undefined`.
+* Ideal para **buscas pontuais** em arrays.
+
+---
+
+
