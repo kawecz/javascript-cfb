@@ -2547,3 +2547,123 @@ console.log(produtoTablet);
 ---
 
 
+## 📘Aula 48 - Aprendendo o método every()
+
+---
+
+### ✅ **1. O que é o método `every()`?**
+
+O método `every()` é usado para **verificar se todos os elementos de um array** satisfazem uma **condição (função de teste)**.
+
+* Ele **retorna `true`** se **todos** os elementos **passarem no teste**.
+* Ele **retorna `false`** se **algum elemento falhar** no teste.
+
+---
+
+### 🔧 **2. Sintaxe**
+
+```javascript
+array.every(callback(elemento, índice, array))
+```
+
+#### Parâmetros:
+
+* **callback**: função que será executada para cada elemento.
+* **elemento**: o item atual do array.
+* **índice** *(opcional)*: posição do item no array.
+* **array** *(opcional)*: o array original.
+
+---
+
+### 📌 **3. Exemplo Básico**
+
+Verificar se todos os números do array são positivos:
+
+```javascript
+const numeros = [1, 2, 3, 4, 5]
+
+const todosPositivos = numeros.every(function(num) {
+  return num > 0
+})
+
+console.log(todosPositivos) // true
+```
+
+#### Exemplo com `false`:
+
+```javascript
+const numeros = [1, 2, -3, 4, 5]
+
+const todosPositivos = numeros.every(num => num > 0)
+
+console.log(todosPositivos) // false
+```
+
+---
+
+### 🔍 **4. Comparando com `some()`**
+
+* `every()` verifica se **TODOS** os elementos passam.
+* `some()` verifica se **ALGUM** elemento passa.
+
+```javascript
+[1, 2, 3].every(n => n > 0) // true
+[1, 2, -3].some(n => n < 0) // true
+```
+
+---
+
+### 🧩 **5. Aplicações Práticas**
+
+* Verificar se todos os campos de um formulário estão preenchidos.
+* Validar se todos os produtos do carrinho estão em estoque.
+* Confirmar se todos os usuários têm idade mínima.
+
+```javascript
+const pessoas = [
+  { nome: "Ana", idade: 22 },
+  { nome: "Carlos", idade: 30 },
+  { nome: "João", idade: 18 }
+]
+
+const todosMaioresDeIdade = pessoas.every(p => p.idade >= 18)
+
+console.log(todosMaioresDeIdade) // true
+```
+
+---
+
+### ⚠️ **6. Cuidados e Boas Práticas**
+
+* `every()` **para de executar** assim que encontra um `false` (melhora de desempenho).
+* Retorna `true` em **arrays vazios** (por convenção lógica).
+
+```javascript
+[].every(n => n > 0) // true (atenção!)
+```
+
+* Use funções **simples e claras** dentro do callback.
+
+---
+
+### 📚 **7. Resumo**
+
+| Função    | Verifica Se...                | Retorna           |
+| --------- | ----------------------------- | ----------------- |
+| `every()` | **Todos** os elementos passam | `true` ou `false` |
+| `some()`  | **Algum** elemento passa      | `true` ou `false` |
+
+---
+
+### 📘 **8. Pratique**
+
+```javascript
+const notas = [7, 8, 9, 10]
+console.log(notas.every(n => n >= 7)) // true
+
+const palavras = ["JavaScript", "Java", "Python"]
+console.log(palavras.every(p => p.includes("J"))) // true
+```
+
+---
+
