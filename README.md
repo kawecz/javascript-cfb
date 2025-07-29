@@ -2667,3 +2667,104 @@ console.log(palavras.every(p => p.includes("J"))) // true
 
 ---
 
+## 📘Aula 49 - Aprendendo o método SOME
+
+### **1. Definição & Conceito Central**
+
+* O método `some()` verifica se **pelo menos um elemento** de um array **satisfaz uma condição**.
+* Ele retorna um **valor booleano**:
+
+  * `true` → se **algum** elemento passa no teste.
+  * `false` → se **nenhum** elemento passa no teste.
+
+> 🔎 *É como perguntar: “Existe **pelo menos um** item que atende a esta regra?”*
+
+---
+
+### **2. Sintaxe**
+
+```javascript
+array.some(callback(element, index, array))
+```
+
+**Parâmetros:**
+
+* `callback`: função que será executada para cada elemento.
+* `element`: o item atual do array.
+* `index` *(opcional)*: índice do elemento.
+* `array` *(opcional)*: o array original.
+
+---
+
+### **3. Exemplo Prático**
+
+```javascript
+const numeros = [1, 3, 5, 8, 10]
+
+const temPar = numeros.some((n) => n % 2 === 0)
+
+console.log(temPar) // true (porque 8 e 10 são pares)
+```
+
+---
+
+### **4. Outro Exemplo com Objetos**
+
+```javascript
+const usuarios = [
+  { nome: "João", ativo: false },
+  { nome: "Ana", ativo: true },
+  { nome: "Carlos", ativo: false }
+]
+
+const existeAtivo = usuarios.some((u) => u.ativo === true)
+
+console.log(existeAtivo) // true (porque Ana está ativa)
+```
+
+---
+
+### **5. Diferença entre `some()` e `every()`**
+
+| Método    | Verifica se...                               | Retorno |
+| --------- | -------------------------------------------- | ------- |
+| `some()`  | **Algum** elemento satisfaz a condição       | Boolean |
+| `every()` | **Todos** os elementos satisfazem a condição | Boolean |
+
+---
+
+### **6. Casos de Uso Comuns**
+
+* Verificar se **existe pelo menos um valor válido** no array.
+* Saber se **algum item está marcado** em uma lista.
+* Validar se **há duplicatas** ou **dados incompletos**.
+
+---
+
+### **7. Boas Práticas**
+
+✅ Use quando **basta um** valor que atenda à condição.
+❌ Não confunda com `filter()` ou `map()` — que retornam arrays novos.
+✅ Ideal para **validação rápida** de dados em formulários, listas, etc.
+
+---
+
+### **8. Exercício de Fixação**
+
+```javascript
+const emails = ["teste@email.com", "", "admin@site.com"]
+
+// Verificar se há algum campo de e-mail vazio
+const vazio = emails.some(e => e === "")
+
+console.log(vazio) // true
+```
+
+---
+
+### **9. Conclusão**
+
+O método `some()` é uma ferramenta poderosa para **testar rapidamente** se **alguma condição é verdadeira** em um array. Ele evita laços desnecessários e torna o código mais limpo e legível.
+
+---
+
