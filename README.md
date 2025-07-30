@@ -2768,3 +2768,99 @@ O método `some()` é uma ferramenta poderosa para **testar rapidamente** se **a
 
 ---
 
+## 📘Aula 50 - Aprendendo o método REDUCE 
+
+**Introdução** – O método `reduce()` é uma ferramenta poderosa de arrays em JavaScript que permite transformar todos os elementos de um array em um único valor, seja uma soma, string, objeto ou outra estrutura.
+
+### **1. Definição e Propósito**
+
+* `reduce()` executa uma função de callback em cada elemento do array (da esquerda para a direita), acumulando um resultado final.
+* Útil para operações como somas, multiplicações, agregações, construções de objetos, etc.
+
+### **2. Sintaxe**
+
+```javascript
+array.reduce(callback, valorInicial)
+```
+
+**callback:** `(acumulador, valorAtual, índice?, array?) => novoAcumulador`
+**valorInicial:** valor opcional que define o estado inicial do acumulador.
+
+### **3. Componentes da Função de Callback**
+
+* **acumulador:** resultado acumulado até o momento.
+* **valorAtual:** item atual da iteração.
+* **índice (opcional):** posição atual no array.
+* **array (opcional):** o array original sendo reduzido.
+
+### **4. Exemplos Práticos**
+
+**4.1. Soma de números**
+
+```javascript
+const numeros = [1, 2, 3, 4]
+const soma = numeros.reduce((acc, val) => acc + val, 0)
+console.log(soma) // 10
+```
+
+**4.2. Produto de números**
+
+```javascript
+const nums = [2, 3, 4]
+const produto = nums.reduce((acc, val) => acc * val, 1)
+console.log(produto) // 24
+```
+
+**4.3. Contar ocorrências em array**
+
+```javascript
+const frutas = ['maçã', 'banana', 'maçã']
+const contagem = frutas.reduce((acc, fruta) => {
+  acc[fruta] = (acc[fruta] || 0) + 1
+  return acc
+}, {})
+console.log(contagem) // { maçã: 2, banana: 1 }
+```
+
+**4.4. Somar propriedades de objetos**
+
+```javascript
+const produtos = [
+  { nome: 'Camisa', preco: 50 },
+  { nome: 'Calça', preco: 100 }
+]
+const total = produtos.reduce((acc, item) => acc + item.preco, 0)
+console.log(total) // 150
+```
+
+### **5. Casos Avançados**
+
+**Reduzir array em string formatada**
+
+```javascript
+const nomes = ['Ana', 'João', 'Carlos']
+const lista = nomes.reduce((acc, nome, i) => {
+  return acc + (i > 0 ? ', ' : '') + nome
+}, '')
+console.log(lista) // "Ana, João, Carlos"
+```
+
+**Flatten (achatamento) de arrays**
+
+```javascript
+const nested = [[1, 2], [3, 4]]
+const flat = nested.reduce((acc, arr) => acc.concat(arr), [])
+console.log(flat) // [1, 2, 3, 4]
+```
+
+### **6. Armadilhas Comuns**
+
+* Omitir `valorInicial`: se o array estiver vazio, gera erro.
+* Usar `reduce` para tudo: às vezes `map`, `filter` ou `forEach` são mais claros.
+* Modificar o acumulador incorretamente (imutabilidade em objetos é importante).
+
+### **7. Conclusão**
+
+O método `reduce()` permite transformar um array em praticamente qualquer estrutura ou valor único. É versátil, mas exige atenção à lógica acumulativa.
+
+--- 
