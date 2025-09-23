@@ -1,0 +1,43 @@
+* {
+    background: white;
+    transition: all 1s;
+}
+
+main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 10em;  
+}
+
+input[type="number"] {
+    padding: 2em;
+    outline: transparent;
+    border: 1px solid black;
+    border-radius: 1em;
+}
+
+button {
+    margin-top: 2em;
+    padding: 1em;
+    border: 1px solid black;
+    border-radius: 2em;
+    cursor: pointer;
+    background: green;
+}
+button:hover {
+    opacity: 80%;
+    background: rgb(7, 44, 7);
+    color: white;
+}
+
+
+#resultado {
+    margin-top: 2em;
+    border: 1px solid black;
+    width: 450px;
+    height: 250px;
+    border-radius: 2em;
+    text-align: center;
+}
