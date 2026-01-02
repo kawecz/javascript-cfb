@@ -61,12 +61,12 @@
 // console.log(c2.municao);
 // console.log("------------------------------");
 
-class Pessoa {
-    constructor(nome) {
-        this.nome = nome
-    }
-}
+// class Pessoa {
+//     constructor(nome) {
+//         this.nome = nome
+//     }
+// }
 
-const p = new Pessoa("Kawe")
+// const p = new Pessoa("Kawe")
 
-console.log(p.nome)
+// console.log(p.nome)
