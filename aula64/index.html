@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aula 64 - Exercício 2</title>
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <main>
+      <form>
+        <input type="text" name="nome" id="nome" placeholder="Nome" required />
+        <input
+          type="number"
+          name="numero_portas"
+          id="numero_portas"
+          placeholder="Portas"
+          required
+          min="1"
+          max="4"
+        />
+        <input
+          type="number"
+          name="blindagem"
+          id="blindagem"
+          placeholder="Blindagem (0-100)"
+          disabled
+        />
+        <input
+          type="number"
+          name="municao"
+          id="municao"
+          placeholder="Munição"
+          disabled
+        />
+
+        <div class="tipos">
+          <input type="radio" name="tipo" id="militar" /><label for="militar"
+            >Militar</label
+          >
+          <input type="radio" name="tipo" id="normal" checked /><label
+            for="normal"
+            >Normal</label
+          >
+        </div>
+        <input type="submit" value="Adicionar" />
+        <input type="button" value="Resetar" />
+      </form>
+      <div class="res"></div>
+    </main>
+  </body>
+</html>
